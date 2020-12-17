@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> <!--bootstrap-->
+    <title>Joke API</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="mb-4">My Jokes</h1>
+
+        <form action="/logout?_method=DELETE" method="POST">
+            <button class="btn btn-danger mb-4">Log out</button>
+        </form>
+
+        <a href="/" class="btn btn-info">My Jokes</a>
+        <a href="/cat/Any/<%= user %>" class="btn btn-info">Any</a>
+        <a href="/cat/Programming/<%= user %>" class="btn btn-info">Programming</a>
+        <a href="/cat/Miscellaneous/<%= user %>" class="btn btn-info">Miscellaneous</a>
+        <a href="/cat/Dark/<%= user %>" class="btn btn-info">Dark</a>
+        <a href="/cat/Pun/<%= user %>" class="btn btn-info">Pun</a>
+        <a href="/cat/Spooky/<%= user %>" class="btn btn-info">Spooky</a>
+        <a href="/cat/Christmas/<%= user %>" class="btn btn-info">Christmas</a>
+
+        <% jokes.forEach(joke => { %> 
+
+            <div class="card mt-4">
+                <div class="card-body">
+        
+                    <h4 class="card-title"> <%= joke.category %></h4>
+        
+                    <div class="card-subtitle text-muted mb-2"> 
+                        <%= joke.type %>
+                    </div>
+        
+                    <% if (joke.type == "single") { %>
+                        <div class="card-text mb-2"> <%= joke.joke %></div>
+                        <%} else { %>
+                            <div class="card-text mb-2"> <%= joke.setup %></div>
+                            <div class="card-text mb-2"> <%= joke.delivery %></div>
+                        <% } %>
+        
+                        <form action="/user/delete/<%= joke.id %>/<%= user %>" method="POST">
+                            <button class="btn btn-danger mb-4">Delete Joke</button>
+                        </form>
+                </div>
+            </div>
+        <% }) %>
+
+    </div>
+</body>
+</html>
