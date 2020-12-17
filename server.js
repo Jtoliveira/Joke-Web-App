@@ -1,6 +1,6 @@
 if(process.env.NODE_ENV !== 'production'){
     require('dotenv').config()
-}
+} //used in development but abandoned upon release to public repo, replaced the .env file with the secret for "keyboard cat"
 
 const express = require('express')
 const bcrypt = require('bcrypt')
@@ -36,7 +36,7 @@ app.use('/user', userRouter)
 app.use(express.urlencoded({extended:false}))//access the form items in the req body
 app.use(flash())
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: "keyboard cat",
     resave: false,
     saveUninitialized: false
 }))

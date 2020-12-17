@@ -5,9 +5,6 @@ const API = require('./APIrequests')
 const router = express.Router()
 
 router.get('/:category/:userID', (req,res) =>{
-
-    console.log(req.params.userID)
-
     API.request("https://sv443.net/jokeapi/v2/joke/" + req.params.category + "?amount=10")
     .then(data => {
 
