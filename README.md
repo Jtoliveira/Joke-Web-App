@@ -7,7 +7,7 @@ Frontend developed with EJS.
 
 The code itself has some flaws, like the lack of delete and put methods on the user routes, a server.js file with messy code and the IDs passed as a request parameters between views so it can be accessed by the routers.
 
-##Running the thing:
+## Running the thing:
 
 1) make sure mongoDB is up and running and Node.js is installed on the computer
 2) open a terminal in the project folder
